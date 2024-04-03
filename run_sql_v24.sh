@@ -47,7 +47,8 @@ OPTFILTERS=$(cat "${SQL}.sql" | egrep "${EGREPFILTER}" \
 		 | sed -e "${SEDFILTER}" | sort -u | tr '\n' ' ')
 
 
-SCRIPT="$(basename $0)"
+#SCRIPT="$(basename $0)"
+SCRIPT="$0"
 
 DATESTAMP=$(date +'%Y%m%d.%H%M%S');
 
