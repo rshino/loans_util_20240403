@@ -100,14 +100,16 @@ fi
 if [ -n "${PREFIX}" ]
 then
     OUT="${OUTDIRROOT}/${PREFIX}${SEP}${DATESTAMP}"
+    OUTREL="${PREFIX}${SEP}${DATESTAMP}"    
     GENOUT="${OUTDIRROOT}/${PREFIX}"
 else
     OUT="${OUTDIRROOT}/${SQL}${SEP}${DATESTAMP}"    
+    OUTREL="${SQL}${SEP}${DATESTAMP}"    
     GENOUT="${OUTDIRROOT}/${SQL}"
 fi
 
 if [ ! -d "${OUT}" ]; then mkdir ${OUT};fi;
-ln -sf "${GENOUT}" "${OUT}"
+#ln -sf "${GENOUT}" "${OUT}"
 
 # make backups of sh and sql
 cp -p "${SCRIPT}" "${OUT}"
@@ -177,7 +179,7 @@ then
 else
     ln -sf "${OUT}" 00latestdir
     ln -sf "${OUT}"/"${PREFIX}${SEP}${SQL}"-"${DATESTAMP}".tsv 00latest.tsv
-    ln -sf "${OUT}"/"${PREFIX}${SEP}${SQL}"-"${DATESTAMP}".tsv "${GENOUT}".tsv
+    ln -sf "${OUTREL}"/"${PREFIX}${SEP}${SQL}"-"${DATESTAMP}".tsv "${GENOUT}".tsv
 fi
 
 
