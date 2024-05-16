@@ -16,3 +16,9 @@
 #define FC2(x,prec) round(x,prec+2)
 #define FC1(x) FC2(x,1)
 #endif
+
+#	ifdef ROLL
+#	  define GF(p) case when grouping(p)=1 then 'Total' else p end  
+#	else ndef ROLL
+#	  define GF(p) p 
+#	endif ROLL

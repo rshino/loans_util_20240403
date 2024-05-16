@@ -131,7 +131,7 @@ fi
 CMD="if [ \! -d ${OUT} ]; then mkdir ${OUT};fi;\
 	cat  "${SQL}".sql \
 	  | sed ${FILTERS[@]} \
-	  | cpp -I. -I.. ${CPPFILTERS[@]} 2>/dev/null \
+	  | cpp -I. -I../00util  ${CPPFILTERS[@]} 2>/dev/null \
 	  | tee "${OUT}"/"${PREFIX}${SEP}${SQL}"-"${DATESTAMP}".runlog.sql \
 	  | mysql --login-path=shino loans 2>> \
 	    "${OUT}"/"${PREFIX}${SEP}${SQL}"-"${DATESTAMP}".log \
